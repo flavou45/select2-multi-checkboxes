@@ -4,9 +4,9 @@
 name: @flavou45/select2-multi-checkboxes Package
 
 on:
-  release:
-    types:
-      - created
+  push:
+    branches:
+      - master
 
 jobs:
   publish-gpr:
