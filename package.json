@@ -1,5 +1,5 @@
 {
-  "name": "select2-multi-checkboxes",
+  "name": "@youlead/select2-multi-checkboxes",
   "homepage": "https://github.com/flavou45/select2-multi-checkboxes",
   "author": "flavou45 (https://github.com/flavou45)",
   "repository": {
@@ -22,5 +22,8 @@
   "license": "MIT",
   "dependencies": {
 	  "select2": "^4.0.13"
-  }	  
+  },
+  "publishConfig": {
+	  "registry":"https://npm.pkg.github.com"
+  },
 }
