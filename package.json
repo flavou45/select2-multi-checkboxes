@@ -1,13 +1,26 @@
 {
   "name": "select2-multi-checkboxes",
-  "homepage": "https://github.com/wasikuss/select2-multi-checkboxes",
-  "author": {
-    "name": "wasikuss",
-    "url": "https://github.com/wasikuss"
-  },
+  "homepage": "https://github.com/flavou45/select2-multi-checkboxes",
+  "author": "flavou45 (https://github.com/flavou45)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wasikuss/select2-multi-checkboxes.git"
+    "url": "git+https://github.com/flavou45/select2-multi-checkboxes.git"
   },
-  "version": "1.0.0"
+  "version": "1.0.1",
+  "description": "Plugin to select2 (https://github.com/select2/select2) allowing multiple selection while retain old good dropdown.",
+  "bugs": {
+    "url": "https://github.com/flavou45/select2-multi-checkboxes/issues"
+  },
+  "main": "select2.multi-checkboxes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "select2",
+    "checkbox"
+  ],
+  "license": "MIT",
+  "dependencies": {
+	  "select2": "^4.0.13"
+  }	  
 }
