@@ -7,12 +7,12 @@
  * inspired by : https://github.com/select2/select2/issues/411
  * License     : MIT
  */
-(function($) {
-  var S2MultiCheckboxes = function(options, element) {
+ (function ($) {
+  var S2MultiCheckboxes = function (options, element) {
     var self = this;
     self.options = options;
     self.$element = $(element);
-	var values = self.$element.val();
+    var values = self.$element.val();
     self.$element.removeAttr('multiple');
     self.select2 = self.$element.select2({
       theme: options.theme,
@@ -20,15 +20,15 @@
       minimumResultsForSearch: options.minimumResultsForSearch,
       placeholder: options.placeholder,
       closeOnSelect: false,
-      templateSelection: function() {
+      templateSelection: function () {
         return self.options.templateSelection(self.$element.children('option:selected') || [], $('option', self.$element).length);
       },
-      templateResult: function(result) {
+      templateResult: function (result) {
         if (result.loading !== undefined)
           return result.text;
         return $('<div>').text(result.text).addClass(self.options.wrapClass);
       },
-      matcher: function(params, data) {
+      matcher: function (params, data) {
         var original_matcher = $.fn.select2.defaults.defaults.matcher;
         var result = original_matcher(params, data);
         if (result && self.options.searchMatchOptGroups && data.children && result.children && data.children.length != result.children.length) {
@@ -37,11 +37,11 @@
         return result;
       }
     }).data('select2');
-    self.select2.$results.off("mouseup").on("mouseup", ".select2-results__option[aria-selected]", (function(self) {
-      return function(evt) {
+    self.select2.$results.off("mouseup").on("mouseup", ".select2-results__option[aria-selected]", (function (self) {
+      return function (evt) {
         var $this = $(this);
-	
-	const Utils = $.fn.select2.amd.require('select2/utils')
+
+        const Utils = $.fn.select2.amd.require('select2/utils')
         var data = Utils.GetData(this, 'data');
 
         if ($this.attr('aria-selected') === 'true') {
@@ -58,23 +58,29 @@
         });
       }
     })(self.select2));
+    if(options.customScroll){
+      self.select2.$element.on("select2:open", function () {
+        $('.select2-results__options').niceScroll();
+      });
+    }
     self.$element.attr('multiple', 'multiple').val(values).trigger('change.select2');
   }
 
   $.fn.extend({
-    select2MultiCheckboxes: function() {
+    select2MultiCheckboxes: function () {
       var options = $.extend({
         theme: 'default',
         placeholder: 'Choose elements',
-        templateSelection: function(selected, total) {
+        templateSelection: function (selected, total) {
           return selected.length + ' > ' + total + ' total';
         },
         wrapClass: 'wrap',
         minimumResultsForSearch: -1,
-        searchMatchOptGroups: true
+        searchMatchOptGroups: true,
+        customScroll: true
       }, arguments[0]);
 
-      this.each(function() {
+      this.each(function () {
         new S2MultiCheckboxes(options, this);
       });
     }
