@@ -75,7 +75,7 @@
           return selected.length + ' > ' + total + ' total';
         },
         wrapClass: 'wrap',
-        minimumResultsForSearch: -1,
+        minimumResultsForSearch: 0,
         searchMatchOptGroups: true,
         customScroll: true
       }, arguments[0]);
