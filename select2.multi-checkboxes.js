@@ -15,7 +15,8 @@
     var values = self.$element.val();
     self.$element.removeAttr('multiple');
     self.select2 = self.$element.select2({
-      theme: options.theme,
+      theme: options.theme,     
+      width: options.width,
       allowClear: true,
       minimumResultsForSearch: options.minimumResultsForSearch,
       placeholder: options.placeholder,
@@ -70,6 +71,7 @@
     select2MultiCheckboxes: function () {
       var options = $.extend({
         theme: 'default',
+        width: '100%',
         placeholder: 'Choose elements',
         templateSelection: function (selected, total) {
           return selected.length + ' > ' + total + ' total';
