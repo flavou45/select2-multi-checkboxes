@@ -22,7 +22,7 @@
       placeholder: options.placeholder,
       closeOnSelect: false,
       templateSelection: function () {
-        return self.options.templateSelection(self.$element.children('option:selected') || [], $('option', self.$element).length);
+        return self.options.templateSelection(self.$element.find('option:selected') || [], $('option', self.$element).length);
       },
       templateResult: function (result) {
         if (result.loading !== undefined)
@@ -32,7 +32,7 @@
       matcher: function (params, data) {
         var original_matcher = $.fn.select2.defaults.defaults.matcher;
         var result = original_matcher(params, data);
-        if (result && self.options.searchMatchOptGroups && data.children && result.children && data.children.length != result.children.length) {
+        if (result && self.options.searchMatchOptGroups && data.children && result.children && data.children.length !== result.children.length) {
           result.children = data.children;
         }
         return result;
